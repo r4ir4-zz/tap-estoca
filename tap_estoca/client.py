@@ -7,17 +7,13 @@ class EstocaClient():
 
     def __init__(self, config):
         self.config = config
-        self.headers = {'Authorization': "Token \"{}\"".format(config['api_key'])}
-        LOGGER.info(self.headers)
+        # define URL for this endpoint
+        url = "/".join([self.config['api_url']])
+        # define request parameters
+        params = {'storeID':storeID,'startDate': startDate,'endDate': endDate,'columns':columns,'api_key':api_key}
 
     def get_orders(self,start_date,end_date):
-        api_data = []
-
-        # define URL for this endpoint
-        url = "/".join([self.config['api_url'],'v2','orders'])
-        # define request parameters
-        params = {'start': start_date,'finish': end_date}
-        page = 1
+        api_data = []           
         LOGGER.info("Start Date: {0}, Finish Date: {1}".format(start_date,end_date))
         response = [1]
         # iterate through VNDA pages
