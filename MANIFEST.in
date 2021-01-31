@@ -1,2 +1,2 @@
 include LICENSE
-include tap_vnda_ecommerce/schemas/*.json
+include tap_estoca/schemas/*.json
