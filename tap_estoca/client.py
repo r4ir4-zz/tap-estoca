@@ -3,12 +3,12 @@ import singer
 
 LOGGER = singer.get_logger()
 
-class VndaEcommerceClient():
+class EstocaClient():
 
     def __init__(self, config):
         self.config = config
-        self.headers = {'Authorization': "Token \"{}\"".format(config['api_token'])}
-
+        self.headers = {'Authorization': "Token \"{}\"".format(config['api_key'])}
+        LOGGER.info(self.headers)
 
     def get_orders(self,start_date,end_date):
         api_data = []
