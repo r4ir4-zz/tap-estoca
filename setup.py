@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name="tap-estoca,
+    name="tap-estoca",
     version="0.1.0",
     description="Singer.io tap for extracting data",
     author="Raira",
