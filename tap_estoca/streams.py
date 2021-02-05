@@ -2,7 +2,7 @@ from datetime import timedelta, datetime, timezone
 import singer
 
 LOGGER = singer.get_logger()
-BOOKMARK_DATE_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
+BOOKMARK_DATE_FORMAT = '%Y-%m-%dT%H:%M:%S%fZ'
 
 class Stream:
     def __init__(self, client):
@@ -32,11 +32,11 @@ class Orders(Stream):
         
         # building the request parameters, truncating the date time to date
         extraction_time = singer.utils.now()
-        start_date = datetime.strftime(start_time,'%Y%m%d')
-        finish_date = datetime.strftime(extraction_time,'%Y%m%d')
+        startDate = datetime.strftime(start_time,'%Y%m%d')
+        endDate = datetime.strftime(extraction_time,'%Y%m%d')
         
         # get orders from API and iterate over results
-        for record in self.client.get_orders(start_date,finish_date):
+        for record in self.client.get_orders(startDate,endDate):
             
             transformed_record = transformer.transform(record, stream_schema, stream_metadata)
 

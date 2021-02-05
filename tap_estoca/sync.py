@@ -1,12 +1,12 @@
 import singer
 from singer import Transformer, metadata
 from .streams import STREAMS
-from .client import VndaEcommerceClient
+from .client import EstocaClient
 
 LOGGER = singer.get_logger()
 
 def sync(config, state, catalog): # pylint: disable=too-many-statements
-    client = VndaEcommerceClient(config)
+    client = EstocaClient(config)
 
     with Transformer() as transformer:
         for stream in catalog.get_selected_streams(state):
